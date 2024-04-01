@@ -124,3 +124,49 @@ document.getElementById("promo").innerHTML = `<br><strong>Promo ${dtrmk[0].nama}
 document.getElementById("listP").innerHTML = `List pemesanan : <br>${listP}<br>`;
 document.getElementById("total1").innerHTML = `Total Pembayaran = Rp.${total1}<br>`;
 document.getElementById("totalsds").innerHTML = `Total setelah diskon = Rp.${totalsds}`;
+
+//card-task 5
+const nmhs = [
+    {nama: "Taufiq", nilai: 75, kf:false},
+    {nama: "Andreas", nilai: 85, kf:false},
+    {nama: "Rafi", nilai: 65, kf:false},
+    {nama: "Nathan", nilai: 45, kf:true},
+    {nama: "Yardan", nilai: 55, kf:true}
+];
+
+let hasil = "";
+for (let i = 0; i < nmhs.length; i++) {
+    let mhs = nmhs[i];
+    let nilait = mhs.nilai;
+
+    let akf= mhs.kf ? "Ya" : "Tidak";
+
+    if (mhs.kf) {
+        nilait += 10;
+    }
+
+    let stat = "";
+    if (nilait >= 80) {
+        stat = "A";
+    } else if (nilait >= 70) {
+        stat = "B";
+    } else if (nilait >= 60) {
+        stat = "C";
+    } else if (nilait >= 50) {
+        stat = "D";
+    } else {
+        stat = "E";
+    }
+
+    if (stat === "A" && nilait >= 80) {
+        stat += "+";
+    }
+
+    if (mhs.nama === nmhs[4].nama || mhs.nama === nmhs[3].nama) {
+        hasil += `<li>${mhs.nama} mendapat nilai ${nilait}, mengambil kursus figma: ${akf}, dan mendapatkan grade ${stat}.<br></li>`;
+    } else {
+        hasil += `<li>${mhs.nama} mendapat nilai ${nilait}, mengambil kursus figma: ${akf}, dan mendapatkan grade ${stat}.<br></li>`;
+    }
+}
+
+document.getElementById("mahasiswa").innerHTML = hasil;
