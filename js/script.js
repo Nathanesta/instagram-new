@@ -128,38 +128,38 @@ document.getElementById("totalsds").innerHTML = `Total setelah diskon = Rp.${tot
 //card-task 5
 const nmhs = [
     {nama: "Taufiq", nilai: 75, kf:false},
-    {nama: "Andreas", nilai: 85, kf:false},
-    {nama: "Rafi", nilai: 65, kf:false},
+    {nama: "Andreas", nilai: 100, kf:false},
+    {nama: "Rafi", nilai: 85, kf:false},
     {nama: "Nathan", nilai: 45, kf:true},
     {nama: "Yardan", nilai: 55, kf:true}
 ];
 
 let hasil = "";
+let akf = "";
 for (let i = 0; i < nmhs.length; i++) {
     let mhs = nmhs[i];
     let nilait = mhs.nilai;
 
-    let akf= mhs.kf ? "Ya" : "Tidak";
-
     if (mhs.kf) {
+        akf = "Ya";
         nilait += 10;
+    } else {
+        akf = "Tidak";
     }
-
+    
     let stat = "";
-    if (nilait >= 80) {
+    if (nilait >= 100) {
+        stat = "A+";
+    } else if (nilait >= 80 && nilait <= 100) {
         stat = "A";
-    } else if (nilait >= 70) {
+    } else if (nilait >= 70 && nilait <= 80) {
         stat = "B";
-    } else if (nilait >= 60) {
+    } else if (nilait >= 60 && nilait <= 70) {
         stat = "C";
-    } else if (nilait >= 50) {
+    } else if (nilait >= 50 && nilait <= 60) {
         stat = "D";
     } else {
         stat = "E";
-    }
-
-    if (stat === "A" && nilait >= 80) {
-        stat += "+";
     }
 
     if (mhs.nama === nmhs[4].nama || mhs.nama === nmhs[3].nama) {
@@ -170,3 +170,74 @@ for (let i = 0; i < nmhs.length; i++) {
 }
 
 document.getElementById("mahasiswa").innerHTML = hasil;
+
+//card-task 6
+const datap = [
+    {id: 1, nama: "Vega", age: 25 },
+    {id: 2, nama: "Yardan", age: 50 },
+    {id: 3, nama: "Taufiq", age: 64 },
+    {id: 4, nama: "Nathan", age: 14 },
+    {id: 5, nama: "Andreas", age: 29 },
+    {id: 6, nama: "Rafi", age: 44 },
+    {id: 7, nama: "Ilham", age: 53 },
+    {id: 8, nama: "Bram", age: 32 },
+    {id: 9, nama: "Fandi", age: 10 },
+    {id: 10, nama: "Riza", age: 78 }
+];
+
+const table = document.getElementById("tabelp");
+const jml = datap.length;
+let i = 0;
+let bwh20 = 0;
+let dts50 = 0;
+
+while (i < datap.length) {
+    const row = table.insertRow();
+    const idc = row.insertCell(0);
+    const namac = row.insertCell(1);
+    const agec = row.insertCell(2);
+    idc.innerHTML = datap[i].id;
+    namac.innerHTML = datap[i].nama;
+    agec.innerHTML =  datap[i].age;
+    
+    if (datap[i].age < 20) {
+        bwh20++;
+    } else if (datap[i].age > 50) {
+        dts50++;
+    }
+
+    i++;
+};
+
+
+const totrowk = table.insertRow();
+const rksg = table.insertRow();
+const rksg1 = totrowk.insertCell(0);
+const rksg2 = totrowk.insertCell(1);
+rksg.innerHTML = "";
+rksg1.innerHTML = "";
+rksg2.innerHTML = "";
+
+const totrow = table.insertRow();
+const ksg = totrow.insertCell(0);
+const totlabc = totrow.insertCell(1);
+const jmlc = totrow.insertCell(2);
+ksg.innerHTML = "";
+totlabc.innerHTML = "Jumlah pasien : ";
+jmlc.innerHTML = jml;
+
+const totrow1 = table.insertRow();
+const ksg1 = totrow1.insertCell(0);
+const totlabc1 = totrow1.insertCell(1);
+const bwh20c = totrow1.insertCell(2);
+ksg1.innerHTML = "";
+totlabc1.innerHTML = "Total Pasien dibawah 20 Tahun :";
+bwh20c.innerHTML = bwh20;
+
+const totrow2 = table.insertRow();
+const ksg2 = totrow2.insertCell(0);
+const totlabc2 = totrow2.insertCell(1);
+const dts50c = totrow2.insertCell(2);
+ksg2.innerHTML = "";
+totlabc2.innerHTML = "Total Pasien diatas 50 Tahun :";
+dts50c.innerHTML = dts50;
