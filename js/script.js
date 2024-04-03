@@ -209,7 +209,6 @@ while (i < datap.length) {
     i++;
 };
 
-
 const totrowk = table.insertRow();
 const rksg = table.insertRow();
 const rksg1 = totrowk.insertCell(0);
@@ -241,3 +240,154 @@ const dts50c = totrow2.insertCell(2);
 ksg2.innerHTML = "";
 totlabc2.innerHTML = "Total Pasien diatas 50 Tahun :";
 dts50c.innerHTML = dts50;
+
+//card-task7
+
+const list = {
+    status: 200,
+    error: null,
+    metadata: {
+        pagination: true,
+        total: 10,
+    },
+    message: 'view data collection',
+    data: [
+        {
+        id: 1,
+        name: 'Vega',
+        age: 25,
+        gaji: 1000000
+        },
+        {
+        id: 2,
+        name: 'Yardan',
+        age: 50,
+        gaji: 1200000
+        },
+        {
+        id: 3,
+        name: 'Taufiq',
+        age: 64,
+        gaji: 3000000
+        },
+        {
+        id: 4,
+        name: 'Nathan',
+        age: 14,
+        gaji: 2500000
+        },
+        {
+        id: 5,
+        name: 'Andreas',
+        age: 29,
+        gaji: 3000000
+        },
+        {
+        id: 6,
+        name: 'Rafi',
+        age: 44,
+        gaji: 1500000
+        },
+        {
+        id: 7,
+        name: 'Ilham',
+        age: 53,
+        gaji: 5000000
+        },
+        {
+        id: 8,
+        name: 'Bram',
+        age: 32,
+        gaji: 5000000
+        },
+        {
+        id: 9,
+        name: 'Fandi',
+        age: 10,
+        gaji: 9000000
+        },
+        {
+        id: 10,
+        name: 'Riza',
+        age: 78,
+        gaji: 9000000
+
+        },
+    ]
+}
+
+document.getElementById('total').innerHTML = list.data.length;
+
+let tbody = '';
+let total20 = 0;
+let total50 = 0;
+let totgj = 0;
+let totgj40 = 0;
+let totgj20 = 0;
+
+for (let i = 0; i < list.data.length; i++) {
+    let dt = list.data[i];
+    tbody += `
+        <tr>
+            <td>${dt.id}</td>
+            <td>${dt.name}</td>
+            <td>${dt.age}</td>
+            <td>${dt.gaji}</td>
+        </tr>`;
+
+        if (dt.age < 20) {
+            total20++;
+        } else if (dt.age > 50) {
+            total50++;
+        }
+
+        if (dt.age >= 40) {
+            totgj40 += dt.gaji;
+        } else if (dt.age < 20) {
+            totgj20;    
+        } else if (dt.age === 14) {
+            dt[3].gaji = 10000;
+        }
+        totgj += dt.gaji;
+
+    };
+    
+document.getElementById('table_body').innerHTML = tbody;
+document.getElementById('table_foot').innerHTML = `
+    <tr>
+        <td>Total</td>
+        <td>&nbsp;</td>
+        <td>${list.data.length}</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Total dibawah 20 tahun</td>
+        <td>&nbsp;</td>
+        <td>${total20}</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Total diatas 50 tahun</td>
+        <td>&nbsp;</td>
+        <td>${total50}</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Total gaji</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>${totgj}</td>
+    </tr>
+    <tr>
+        <td>Total gaji diatas 40 tahun</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>${totgj40}</td>
+    </tr>
+    <tr>
+        <td>Total gaji dibawah 20 tahun</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>${totgj20}</td>
+    </tr>
+`;
