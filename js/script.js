@@ -242,7 +242,6 @@ totlabc2.innerHTML = "Total Pasien diatas 50 Tahun :";
 dts50c.innerHTML = dts50;
 
 //card-task7
-
 const list = {
     status: 200,
     error: null,
@@ -252,81 +251,32 @@ const list = {
     },
     message: 'view data collection',
     data: [
-        {
-        id: 1,
-        name: 'Vega',
-        age: 25,
-        gaji: 1000000
-        },
-        {
-        id: 2,
-        name: 'Yardan',
-        age: 50,
-        gaji: 1200000
-        },
-        {
-        id: 3,
-        name: 'Taufiq',
-        age: 64,
-        gaji: 3000000
-        },
-        {
-        id: 4,
-        name: 'Nathan',
-        age: 14,
-        gaji: 2500000
-        },
-        {
-        id: 5,
-        name: 'Andreas',
-        age: 29,
-        gaji: 3000000
-        },
-        {
-        id: 6,
-        name: 'Rafi',
-        age: 44,
-        gaji: 1500000
-        },
-        {
-        id: 7,
-        name: 'Ilham',
-        age: 53,
-        gaji: 5000000
-        },
-        {
-        id: 8,
-        name: 'Bram',
-        age: 32,
-        gaji: 5000000
-        },
-        {
-        id: 9,
-        name: 'Fandi',
-        age: 10,
-        gaji: 9000000
-        },
-        {
-        id: 10,
-        name: 'Riza',
-        age: 78,
-        gaji: 9000000
-
-        },
+        {id: 1,name: 'Vega',age: 25,gaji: 1000000},
+        {id: 2,name: 'Yardan',age: 50,gaji: 1200000},
+        {id: 3,name: 'Taufiq',age: 64,gaji: 3000000},
+        {id: 4,name: 'Nathan',age: 14, gaji: 10000000},
+        {id: 5,name: 'Andreas',age: 29,gaji: 3000000},
+        {id: 6,name: 'Rafi',age: 44,gaji: 1500000},
+        {id: 7,name: 'Ilham',age: 53,gaji: 5000000},
+        {id: 8,name: 'Bram',age: 32,gaji: 5000000},
+        {id: 9,name: 'Fandi',age: 10,gaji: 9000000},
+        {id: 10,name: 'Riza',age: 78,gaji: 9000000}
     ]
 }
 
-document.getElementById('total').innerHTML = list.data.length;
 
 let tbody = '';
-let total20 = 0;
-let total50 = 0;
+let tot20 = 0;
+let tot50 = 0;
 let totgj = 0;
 let totgj40 = 0;
 let totgj20 = 0;
+let totgj14 = 0;
+let pu14 = 0;
 
 for (let i = 0; i < list.data.length; i++) {
     let dt = list.data[i];
+    pu14 = list.data[3].gaji;
     tbody += `
         <tr>
             <td>${dt.id}</td>
@@ -336,18 +286,16 @@ for (let i = 0; i < list.data.length; i++) {
         </tr>`;
 
         if (dt.age < 20) {
-            total20++;
+            tot20++;
         } else if (dt.age > 50) {
-            total50++;
+            tot50++;
         }
-
+        
         if (dt.age >= 40) {
             totgj40 += dt.gaji;
         } else if (dt.age < 20) {
-            totgj20;    
-        } else if (dt.age === 14) {
-            dt[3].gaji = 10000;
-        }
+            totgj14 += pu14;    
+        } 
         totgj += dt.gaji;
 
     };
@@ -363,17 +311,17 @@ document.getElementById('table_foot').innerHTML = `
     <tr>
         <td>Total dibawah 20 tahun</td>
         <td>&nbsp;</td>
-        <td>${total20}</td>
+        <td>${tot20}</td>
         <td>&nbsp;</td>
     </tr>
     <tr>
         <td>Total diatas 50 tahun</td>
         <td>&nbsp;</td>
-        <td>${total50}</td>
+        <td>${tot50}</td>
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td>Total gaji</td>
+        <td>Total gaji keseluruhan</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>${totgj}</td>
@@ -390,4 +338,373 @@ document.getElementById('table_foot').innerHTML = `
         <td>&nbsp;</td>
         <td>${totgj20}</td>
     </tr>
+    <tr>
+        <td>Total gaji khusus 14 tahun</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>${pu14}</td>
+    </tr>
 `;
+
+// card-task 1 part 2
+const daftarmk = [
+    {nama: "Es Kopi Susu", harga: 10000},
+    {nama: "Roti Bakar", harga: 25000},
+    {nama: "Ice Cream", harga: 15000}
+];
+function tpmn(daftarc1) {
+    let menuc = "";
+    let totc = 0;
+    let discc = 10/100;
+    for (let i = 0; i < daftarc1.length; i++) {
+        menuc += `<li>${daftarc1[i].nama} : Rp.${daftarc1[i].harga}</li>`;
+        totc += daftarc1[i].harga;    
+    }
+    const totdisc = totc - discc1(discc,totc);
+
+    return menuc + `<br>Total harga : Rp.` + totc + `<br>Total diskon : Rp.` + totdisc + `<br>Total Pembayaran : Rp.` + (totc - totdisc);
+}
+function discc1(diskon, total) {
+    let disc10 = diskon * total;
+    return total - disc10;
+}
+
+const listpc1 = tpmn(daftarmk);
+document.getElementById("menuc1").innerHTML = listpc1;
+
+// card-task 2 part 2
+const daftarmakanan2 = [
+    { nama: "Es Kopi Susu", harga: 10000 },
+    { nama: "Roti Bakar", harga: 25000 },
+    { nama: "Ice Cream", harga: 15000 }
+];
+function tpmn2(daftarc2) {
+    const disc = 10 / 100;
+    let menuc = "";
+    let totc = 0;
+    let discc = 0;
+    let totdisc = 0;
+
+    for (let i = 0; i < daftarc2.length; i++) {
+        menuc += `<li>${daftarc2[i].nama} : Rp.${daftarc2[i].harga}</li>`;
+        totc += daftarc2[i].harga;
+        daftarc2[2].nama = "Tahu Telor";
+    }
+
+    const nasgor = { nama: "Nasi Goreng", harga: 12000 };
+    daftarc2.push(nasgor);
+
+    totc += daftarc2[3].harga;
+    discc = totc * disc;
+    totdisc = totc - discc;
+
+    return menuc + `<li>${nasgor.nama} : Rp.${nasgor.harga}</li><br>Total harga : Rp.${totc}<br>Total Diskon : Rp.${discc}<br>Total pembayaran : Rp.${totdisc}`;
+}
+
+const listpc2 = tpmn2(daftarmakanan2);
+document.getElementById("menuc2").innerHTML = listpc2;
+
+// card-task 3 part 2
+const dftrmkn3 = [
+    { nama: "Es Kopi Susu", harga: 10000 },
+    { nama: "Roti Bakar", harga: 25000 },
+    { nama: "Ice Cream", harga: 15000 },
+    { nama: "Nasi Goreng", harga: 12000 }
+];
+function tpmn3(daftarc3) {
+    const disc = 10 / 100;
+    let menuc = "";
+    let totc = 0;
+    let discc = 0;
+    let totdisc = 0;
+
+    for (let i = 0; i < daftarc3.length; i++) {
+        menuc += `<li>${daftarc3[i].nama} : Rp.${daftarc3[i].harga}</li>`;
+        totc += daftarc3[i].harga;
+    }
+
+    discc = totc * disc;
+    totdisc = totc - discc;
+
+    return menuc + `<br>Total harga : Rp.${totc}<br>Total diskon : Rp.${discc}<br>Total pembayaran : Rp.${totdisc}`;
+}
+
+const listpc3 = tpmn3(dftrmkn3);
+document.getElementById("menuc3").innerHTML = listpc3;
+
+// card-task 4 part 2
+const dtrmk4 = [
+    { nama: "Nasi Pecel", harga: 10000, variant: ["Original", "Pedas", "Pedas Banget"] },
+    { nama: "Nasi Jagung", harga: 12000, variant: ["Original", "Pedas", "Pedas Banget"] },
+    { nama: "Nasi Ayam", harga: 15000, variant: ["Original", "Pedas", "Pedas Banget"] },
+    { nama: "Nasi Krawu", harga: 14000, variant: ["Original", "Pedas", "Pedas Banget"] },
+    { nama: "Nasi Rendang", harga: 20000, variant: ["Original", "Pedas", "Pedas Banget"] },
+    { nama: "Nasi Lele", harga: 17000, variant: ["Original", "Pedas", "Pedas Banget"] }
+];
+const levelz = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+const pesananz = [
+    { nama: dtrmk4[0].nama, jumlah: 2, variant: dtrmk4[0].variant[0] },
+    { nama: dtrmk4[1].nama, jumlah: 1, variant: dtrmk4[1].variant[1] },
+    { nama: dtrmk4[5].nama, jumlah: 3, variant: dtrmk4[5].variant[2] + ` Level ${levelz[1]}`}
+];
+
+const promoc = 5000;
+const memberc = false;
+let mnuc4 = "";
+let psn = "";
+let totc4 = 0;
+
+function tpmn4(menu, pesanan){
+    menu.forEach(item => {
+        const variants = item.variant[2];
+        mnuc4 += `<li>${item.nama} : Rp.${item.harga}<br> Variant : ${item.variant}<br>Level variant ${variants} : (10-1)</li><br>`;
+        if (item.nama === "Nasi Pecel") {
+            item.harga = promoc;
+        }
+    });
+    pesanan.forEach(pesan => {
+        const menu = dtrmk.find(item => item.nama === pesan.nama);
+        if (menu) {
+            const subtotal = menu.harga * pesan.jumlah;
+            psn += `<div>${pesan.nama} ${pesan.variant} (${pesan.jumlah} porsi) = Rp.${subtotal}</div>`;
+            totc4 += subtotal;
+        }
+    });
+    document.getElementById('dtrmnc4').innerHTML = mnuc4;
+    document.getElementById('psnc4').innerHTML = `List pesanan : ${psn}`;
+    document.getElementById('totc4').innerHTML = `<br>Total harga : Rp.${totc4}`;
+}
+tpmn4(dtrmk, pesananz, memberc);
+
+let disc4 = totc4 * 0.1;
+let pjc4 = totc4 * 0.11;
+let totdcpj = totc4;
+
+if (memberc) {
+    totdcpj = totc4 - disc4 + pjc4;
+    document.getElementById('totm4').innerHTML = " Total pembayaran : Rp. " + totdcpj;
+
+} else {
+    totdcpj = totc4 + pjc4;
+    document.getElementById('totm4').innerHTML = " Total pembayaran : Rp. " + totdcpj;
+
+}
+
+// card-task 5 part 2
+const namhs = [
+    {nama: "Taufiq", nilai: 75, kf:false},
+    {nama: "Andreas", nilai: 90, kf:false},
+    {nama: "Rafi", nilai: 85, kf:false},
+    {nama: "Nathan", nilai: 45, kf:true},
+    {nama: "Yardan", nilai: 55, kf:true}
+];
+
+function grad(nama, value, figma) {
+    let nilai = value;
+    let akf = "";
+
+    if (figma) {
+        akf = "Ya";
+        nilai += 10;
+    } else {
+        akf = "Tidak";
+    }
+    
+    let hasil = "";
+    if (nilai >= 80 && nilai <= 100) {
+        hasil = "A";
+    } else if (nilai >= 70 && nilai <= 80) {
+        hasil = "B";
+    } else if (nilai >= 60 && nilai <= 70) {
+        hasil = "C";
+    } else if (nilai >= 50 && nilai <= 60) {
+        hasil = "D";
+    } else {
+        hasil = "E";
+    }
+
+    if (nilai > 100) {
+        hasil = "A+";
+        value = 100;
+    }
+    
+
+    return {nama: nama, nilai: nilai, hasil: hasil};
+}
+
+let hasilc = "";
+
+for (let i = 0; i < namhs.length; i++) {
+    let mhs = namhs[i];
+    let infoNilai = grad(mhs.nama, mhs.nilai, mhs.kf);
+
+    hasilc += `<li>${infoNilai.nama} mendapat nilai ${infoNilai.nilai}, mengambil kursus figma: ${mhs.kf ? 'Ya' : 'Tidak'}, dan mendapatkan grade ${infoNilai.hasil}.<br></li>`;
+}
+
+document.getElementById("grad").innerHTML = hasilc;
+
+// card-task 6 part 2
+const listc = {
+    status: 200,
+    message: 'view data collection',
+    data: [
+      {id: 1,name: 'Vega',age: 25},
+      {id: 2,name: 'Yardan',age: 50},
+      {id: 3,name: 'Taufiq',age: 64},
+      {id: 4,name: 'Nathan',age: 14},
+      {id: 5,name: 'Andreas',age: 29},
+      {id: 6,name: 'Rafi',age: 44},
+      {id: 7,name: 'Ilham',age: 53},
+      {id: 8,name: 'Bram',age: 32},
+      {id: 9,name: 'Fandi',age: 10},
+      {id: 10,name: 'Riza',age: 78},
+    ]
+  }
+
+  let totc20 = 0;
+  let totc50 = 0;
+  
+  function tabel() {
+      let tbody = "";
+      for (let i = 0; i < listc.data.length; i++) {
+          let dt = listc.data[i];
+          tbody += `
+              <tr>
+                  <td>${dt.id}</td>
+                  <td>${dt.name}</td>
+                  <td>${dt.age}</td>
+              </tr>`;
+              
+            if (dt.age < 20) {
+                totc20++;
+            } else if (dt.age > 50) {
+                totc50++;
+            }
+      }
+      document.getElementById("tpasien").innerHTML = tbody;
+
+  }
+  
+  function hitungpasien(list,tot20,tot50) {
+      return {
+          totalp: list.data.length,
+          bwh20: tot20,
+          atas50: tot50
+      };
+  }
+    tabel();
+  
+    const hitungtp = hitungpasien(listc,totc20,totc50);
+
+    document.getElementById("totpas").innerHTML = `<br>Total pasien : ${hitungtp.totalp}`;
+    document.getElementById("bwhc20").innerHTML = `Pasien dibawah 20 tahun : ${hitungtp.bwh20}`;
+    document.getElementById("atasc50").innerHTML = `Pasien diatas 50 tahun : ${hitungtp.atas50}`;
+
+// card-task 7 part 2
+const listcc = {
+    status: 200,
+    error: null,
+    metadata: {
+        pagination: true,
+        total: 10,
+    },
+    message: 'view data collection',
+    data: [
+        {id: 1,name: 'Vega',age: 25,gaji: 1000000},
+        {id: 2,name: 'Yardan',age: 50,gaji: 1200000},
+        {id: 3,name: 'Taufiq',age: 64,gaji: 3000000},
+        {id: 4,name: 'Nathan',age: 14, gaji: 10000000},
+        {id: 5,name: 'Andreas',age: 29,gaji: 3000000},
+        {id: 6,name: 'Rafi',age: 44,gaji: 1500000},
+        {id: 7,name: 'Ilham',age: 53,gaji: 5000000},
+        {id: 8,name: 'Bram',age: 32,gaji: 5000000},
+        {id: 9,name: 'Fandi',age: 10,gaji: 9000000},
+        {id: 10,name: 'Riza',age: 78,gaji: 9000000}
+    ]
+}
+
+let tot20c = 0;
+let tot50c = 0;
+let totgajic = 0;
+let totgj40c = 0;
+let pu14c = 0;
+    function tabelc() {
+        let tbody = "";
+        for (let i = 0; i < listcc.data.length; i++) {
+            let dt = listcc.data[i];
+            pu14c = listcc.data[3].gaji;
+            tbody += `
+                <tr>
+                    <td>${dt.id}</td>
+                    <td>${dt.name}</td>
+                    <td>${dt.age}</td>
+                    <td>${dt.gaji}</td>
+                </tr>`;
+
+            if (dt.age < 20) {
+                tot20c++;
+            } else if (dt.age > 50) {
+                tot50c++;
+            }
+
+            if (dt.age >= 40) {
+                totgj40c += dt.gaji;
+            } else if (dt.age < 20) {
+                totgj14 += pu14c;    
+            }
+            totgajic += dt.gaji;
+        }
+        document.getElementById("tpasienc").innerHTML = tbody;
+
+    }
+
+    function hitungpasienc() {
+        return {
+            totalp: listcc.data.length,
+            bwh20: tot20c,
+            atas50: tot50c
+        };
+    }
+    tabelc();
+
+const hitungtpc = hitungpasienc();
+
+document.getElementById("totpasc").innerHTML = `<br>Total pasien : ${hitungtpc.totalp}`;
+document.getElementById("bwhc20c").innerHTML = `Pasien dibawah 20 tahun : ${hitungtpc.bwh20}`;
+document.getElementById("atasc50c").innerHTML = `Pasien diatas 50 tahun : ${hitungtpc.atas50}`;
+document.getElementById("totgajic").innerHTML = `Total gaji keseluruhan : ${totgajic}`;
+document.getElementById("totgaji40").innerHTML = `Total gaji diatas 40 tahun : ${totgj40c}`;
+document.getElementById("totgaji14").innerHTML = `Total gaji khusus 14 tahun : ${pu14c}`;
+
+// kalkulator
+let display = document.getElementById('display');
+
+  function tambahkanDisplay(value) {
+    display.value += value;
+  }
+
+  function tambah() {
+    tambahkanDisplay('+');
+  }
+
+  function kurang() {
+    tambahkanDisplay('-');
+  }
+
+  function kali() {
+    tambahkanDisplay('*');
+  }
+
+  function bagi() {
+    tambahkanDisplay('/');
+  }
+
+  function calculate() {
+    let result = eval(display.value);
+    display.value = result;
+  }
+
+  function reset() {
+    display.value = '';
+  }

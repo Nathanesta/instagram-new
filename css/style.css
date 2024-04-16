@@ -263,16 +263,28 @@
 #tabelp {
     width: 60%;
     border-collapse: collapse;
-    
-    }
+}
 #tabelp th, td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    }
+}
 #tabelp {
     background-color: white;
-    }
+}
+#list, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    margin-left: 100px;
+}
+/* #list #table_body {
+    text-align: center;
+} */
+/* #list, td {
+    text-align: left;
+} */
+
 .posts .post-content img {
     width: 100%;
     height: 100%;
