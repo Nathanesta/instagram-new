@@ -700,11 +700,50 @@ let display = document.getElementById('display');
     tambahkanDisplay('/');
   }
 
-  function calculate() {
+  function totalkan() {
     let result = eval(display.value);
     display.value = result;
   }
-
+  function hapusKarakter() {
+    let currentValue = display.value;
+    display.value = currentValue.slice(0, -1); // Menghapus karakter terakhir
+  }
   function reset() {
     display.value = '';
+  }
+
+// search-data
+
+const listData = {
+    status: 200,
+    message: 'view data collection',
+    data: [
+      {id: 1,name: 'Vega',age: 25},
+      {id: 2,name: 'Yardan',age: 50},
+      {id: 3,name: 'Taufiq',age: 64},
+      {id: 4,name: 'Nathan',age: 14},
+      {id: 5,name: 'Andreas',age: 29},
+      {id: 6,name: 'Rafi',age: 44},
+      {id: 7,name: 'Ilham',age: 53},
+      {id: 8,name: 'Bram',age: 32},
+      {id: 9,name: 'Fandi',age: 10},
+      {id: 10,name: 'Riza',age: 78},
+    ]
+  }
+  
+  function searchData() {
+    const searchInput = document.querySelector('#searchInput').value;
+    const resultDiv = document.querySelector('#result');
+
+    const result = listData.data.find(person => person.name.toLowerCase() === searchInput.toLowerCase());
+    if (result) {
+      resultDiv.innerHTML = `<p>ID: ${result.id}</p><p>Name: ${result.name}</p><p>Age: ${result.age}</p>`;
+      if (result.age > 70) {
+        resultDiv.innerHTML += '<p>Manula</p>';
+      } else if (result.age <= 70 && result.age > 50) {
+        resultDiv.innerHTML += '<p>Masih joss</p>';
+      }
+    } else {
+      resultDiv.innerHTML = '<p>Data tidak ditemukan</p>';
+    }
   }
